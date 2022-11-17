@@ -81,6 +81,7 @@ function createCard(storyObj, index){
         comments.innerText = 'Comments: ' + storyObj.descendants;
     }
     score.innerText = 'Score: ' + storyObj.score;
+    storyLink(storyObj.url, title);
     commentLink(comments);
 }
 
@@ -242,7 +243,6 @@ function createCard1(askObj, index){
         comments.innerText = 'Comments: ' + askObj.descendants;
     }
     score.innerText = 'Score: ' + askObj.score;
-    storyLink(askObj.url, title);
     commentLink1(comments);
 }
 
