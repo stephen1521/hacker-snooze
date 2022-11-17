@@ -1,0 +1,69 @@
+#header {
+    background-color: rgb(69, 66, 66);
+    display: flex;
+    color: white;
+}
+
+#title {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+#navBar {
+    background-color: rgb(35, 33, 33);
+}
+
+body {
+    background-color: gray;
+}
+
+.list-group-item {
+    background-color: rgb(69, 66, 66);
+    color: white;
+}
+
+.card-header {
+    background-color: rgb(35, 33, 33);
+    color: white;
+}
+
+.card {
+    margin-left: 15px;
+    margin-bottom: 15px;
+    background-color: rgb(69, 66, 66);
+}
+
+#stories {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-header:hover {
+    cursor: pointer;
+}
+
+.none {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+}
+
+.comment:hover {
+    cursor: pointer;
+}
+
+#askList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#infoBottom {
+    margin-top: 15px;
+    color: gray;
+    background-color: rgb(35, 33, 33);
+    height: 50px;
+}
