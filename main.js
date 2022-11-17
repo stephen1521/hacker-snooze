@@ -9,6 +9,7 @@ let topBool = true;
 
 //https://hacker-news.firebaseio.com/v0/item/id.json?print=pretty
 let topStoriesApi = async () => {
+    //fetch top stories, using a loop to select 20 at a time
     let res = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty');
     let data = await res.json();
     for(let i = start; i < end; i++){
@@ -17,6 +18,7 @@ let topStoriesApi = async () => {
         let data2 = await res2.json();
         storyArr.push(data2);
     }
+    //fetching comments for those 20 stories
     for(let i = start; i < end; i++){
         if(storyArr[i].kids === undefined){
             let obj = {
@@ -41,6 +43,7 @@ let topStoriesApi = async () => {
             commentArr.push(obj);
         }
     }
+    //creating a card for each story
     for(let i = start; i < end; i++){
         let storyObj = storyArr[i];
         createCard(storyObj, i);
@@ -50,6 +53,7 @@ let topStoriesApi = async () => {
 }
 topStoriesApi();
 
+//creating a card for each story
 function createCard(storyObj, index){
     let cardDiv = document.createElement('div');
     let title = document.createElement('div');
@@ -85,11 +89,13 @@ function createCard(storyObj, index){
     commentLink(comments);
 }
 
+//calls api agian to load in more stories
 let button = document.querySelector('#loadMore');
 button.addEventListener('click', () => {
     topStoriesApi();
 })
 
+//adds link to title on card to open story link
 function storyLink (storyUrl, element){
     element.addEventListener('click', () => {
         window.open(storyUrl);
@@ -100,6 +106,7 @@ let commentDiv = document.querySelector('#comments');
 let goBackButton = commentDiv.querySelector('#goBack');
 let commentList = document.querySelector('#commentList');
 
+// adds event to comment on card, so you can pull up all the comments
 function commentLink (element){
     element.addEventListener('click', (event) => {
         storyDiv.classList.toggle('none');
@@ -121,6 +128,7 @@ function commentLink (element){
     })
 }
 
+//allows you to go back and few the stories after looking at comments
 goBackButton.addEventListener('click', () => {
     storyDiv.classList.toggle('none');
     buttonDiv.classList.toggle('none');
@@ -136,6 +144,7 @@ let topStoriesDiv = document.querySelector('#topStories');
 let latestAsk = document.querySelector('#latestAsk');
 let secondHeader = document.querySelector('#secondHeader');
 
+//navbar when clicked shows ask tab
 navAsk.addEventListener('click', () => {
     if(askBool){
     }else{
@@ -147,6 +156,7 @@ navAsk.addEventListener('click', () => {
     }
 });
 
+//navbar when clicked shows top stories
 navTop.addEventListener('click', () => {
     if(topBool){
     }else{
@@ -161,9 +171,10 @@ navTop.addEventListener('click', () => {
 
 ///////////////////////////
 //////////////////////////
-//////////ask tab/////////
+//////////ASK TAB/////////
 //////////////////////////
 //////////////////////////
+//all the code below is pretty much the same as above just using different variables, I hardcoded so I had to do it this way. 
 
 let start1 = 0;
 let end1 = 20;
